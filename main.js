@@ -5,10 +5,11 @@ var p3 = document.querySelector("#color3");
 var p4 = document.querySelector("#color4");
 var p5 = document.querySelector("#color5");
 var p6 = document.querySelector("#color6");
-var labelList = [p1,p2,p3,p4,p5,p6];
 var redValue = document.querySelector("#red_value");
 var greenValue = document.querySelector("#green_value");
 var blueValue = document.querySelector("#blue_value");
+var newGameButton = document.querySelector("#new_colors");
+var labelList = [p1,p2,p3,p4,p5,p6];
 
 
 var colors = getRandomColors();//Colors contains a list of arrays of length 3. The array represent an rgb color.
@@ -18,6 +19,17 @@ greenValue.textContent = winningColor[1];
 blueValue.textContent = winningColor[2];
 setColors(colors);//visually sets the colors
 
+
+
+
+newGameButton.addEventListener("click", function(){
+    colors = getRandomColors();
+    winningColor = colors[getWinningNumber(6)];
+    redValue.textContent = winningColor[0];
+    greenValue.textContent = winningColor[1];
+    blueValue.textContent = winningColor[2];
+    setColors(colors);//visually sets the colors
+});
 
 //Returns a list of colors. The number of colors depends on if easy (0) or hard(1) mode was selected. Each color is an array the the form RGB (0-255,0-255,0-255) inclusive.
 function getRandomColors() {
