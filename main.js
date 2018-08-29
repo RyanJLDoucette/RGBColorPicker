@@ -8,6 +8,7 @@ var labelList = [p1,p2,p3,p4,p5,p6];
 
 //Returns a list of colors. The number of colors depends on if easy (0) or hard(1) mode was selected. Each color is an array the the form RGB (0-255,0-255,0-255) inclusive.
 var test = getRandomColors();
+var winningNumber = getWinningNumber(6);
 setColors(test);
 
 function getRandomColors() {
@@ -24,7 +25,7 @@ function getRandomColors() {
 }
 
 //Sets all the colors to their corresponding values
-function setColors(rgbList) {
+function setColors(rgbList,winningNumber) {
     this.rgbList = rgbList;
     var color = "";
     for (let i = 0; i < 6; i++) {
@@ -32,4 +33,9 @@ function setColors(rgbList) {
         color = "rgb(" + curr.pop() + "," + curr.pop() + "," + curr.pop() +")";
         labelList[i].textContent = color;
     }
+}
+
+//This function picks what positon the winning color will be.
+function getWinningNumber(maxColors) {
+    return Math.floor(Math.random() * Math.floor(maxColors));
 }
