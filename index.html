@@ -1,23 +1,31 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>The Great Guessing Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
 </head>
+
 <body>
     <div id="header">
-        <h3>The Great</h3>
-        <h1>RGB(<span id="red_value">231</span>,<span id="green_value">53</span>,<span id="blue_value">23</span>)</h1>
-        <h3>Guessing Game</h3>
+        <div id="header-content">
+            <h3>The Great</h3>
+            <h1>RGB (<span id="red_value"></span>, <span id="green_value"> </span>, <span id="blue_value"> </span>)</h1>
+            <h3>Guessing Game</h3>
+        </div>
+
     </div>
     <div id="controls">
         <button id="new_colors">New Colors</button>
         <p></p>
-        <button id="easy">Easy</button>
-        <button id="hard">Hard</button>
+        <div id="controls-gamemode">
+            <button id="easy">Easy</button>
+            <button id="hard">Hard</button>
+        </div>
     </div>
     <div id="colors">
         <p id="color1">col1</p>
@@ -29,4 +37,5 @@
     </div>
     <script src="main.js"></script>
 </body>
+
 </html>

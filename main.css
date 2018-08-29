@@ -1,3 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+}
 .hidden {
     display: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#header {
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:#0074D9;
+}
+
+#header-content {
+    text-align: center;
+}
+
+#controls {
+    display: flex;
+    height: 5%;
+    background: grey;
+}
+
+h1 {
+    color: white;
+    font-size: 50px;
+}
+
+h3 {
+    color: white;
+    font-size: 35px;
+}
+
+button {
+    display: inline;
 }
