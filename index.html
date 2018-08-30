@@ -7,7 +7,7 @@
     <title>The Great Guessing Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 
 <body>
@@ -21,19 +21,21 @@
     </div>
     <div id="controls">
         <button id="new_colors">New Colors</button>
-        <p></p>
+        <p>Message</p>
         <div id="controls-gamemode">
             <button id="easy">Easy</button>
             <button id="hard">Hard</button>
         </div>
     </div>
-    <div id="colors">
-        <p id="color1">col1</p>
-        <p id="color2">col2</p>
-        <p id="color3">col3</p>
-        <p id="color4">col4</p>
-        <p id="color5">col5</p>
-        <p id="color6">col6</p>
+    <div id="content">
+        <div id="colors">
+            <div id="color1" class="block"></div>
+            <div id="color2" class="block"></div>
+            <div id="color3" class="block"></div>
+            <div id="color4" class="block"></div>
+            <div id="color5" class="block"></div>
+            <div id="color6" class="block"></div>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>

@@ -21,6 +21,7 @@ redValue.textContent = winningColor[0];//since winner color is an array of 3 int
 greenValue.textContent = winningColor[1];
 blueValue.textContent = winningColor[2];
 setColors(colors, totalColors);//visually sets the colors
+console.log(colors);
 
 
 //if the game mode is already easy. Then this button should not do anything, it should be already disabled. Otherwise start a new easy game
@@ -46,6 +47,12 @@ hardModeButton.addEventListener("click", function() {
         newGame();
     }
 });
+
+for(let i = 0; i < labelList.length;i++) {
+    labelList[i].addEventListener("click",function(){
+        console.log(i);
+    });
+}
 
 newGameButton.addEventListener("click", newGame);
 
@@ -78,8 +85,8 @@ function setColors(rgbList, totalColors) {
     var color = "";
     for (let i = 0; i < totalColors; i++) {
         var curr = rgbList[i];
-        color = "rgb(" + curr.shift() + "," + curr.shift() + "," + curr.shift() +")";
-        labelList[i].textContent = color;
+        color = "rgb(" + curr.shift() + ", " + curr.shift() + ", " + curr.shift() +")";
+        labelList[i].style.background = color;
     }
     if(totalColors == 3) {
         for(let i = 3; i < 6; i++) {
