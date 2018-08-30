@@ -11,9 +11,9 @@ var blueValue = document.querySelector("#blue_value");
 var newGameButton = document.querySelector("#new_colors");
 var easyModeButton = document.querySelector("#easy");
 var hardModeButton = document.querySelector("#hard");
-var labelList = [p1,p2,p3,p4,p5,p6];
+var labelList = [p1, p2, p3, p4, p5, p6];
 var totalColors = 6;//Two game modes. Easy and hard. Easy has 3 colors, and hard has 6 colors. Hard is default, but if easy button is clicked, then the number of colors to choose from goes to 3
-
+var gameOver = false;
 
 var colors = getRandomColors(totalColors);//Colors contains a list of arrays of length 3. The array represent an rgb color.
 var winningColor = colors[getWinningNumber(totalColors)];//winning number picks which of the 3 or 6 (depends on easy or hard) is the winning number
@@ -21,12 +21,11 @@ redValue.textContent = winningColor[0];//since winner color is an array of 3 int
 greenValue.textContent = winningColor[1];
 blueValue.textContent = winningColor[2];
 setColors(colors, totalColors);//visually sets the colors
-console.log(colors);
 
 
 //if the game mode is already easy. Then this button should not do anything, it should be already disabled. Otherwise start a new easy game
-easyModeButton.addEventListener("click", function() {
-    if(totalColors == 3) {
+easyModeButton.addEventListener("click", function () {
+    if (totalColors == 3) {
         //do nothing
     }
     else {
@@ -37,8 +36,8 @@ easyModeButton.addEventListener("click", function() {
 });
 
 //if the game mode is already hard. Then this button should not do anything, it should be already disabled. Otherwise start a new hard game
-hardModeButton.addEventListener("click", function() {
-    if(totalColors == 6) {
+hardModeButton.addEventListener("click", function () {
+    if (totalColors == 6) {
         //do nothing
     }
     else {
@@ -48,17 +47,37 @@ hardModeButton.addEventListener("click", function() {
     }
 });
 
-for(let i = 0; i < labelList.length;i++) {
-    labelList[i].addEventListener("click",function(){
-        console.log(i);
-    });
+for (let i = 0; i < labelList.length; i++) {
+    if (!gameOver) {
+        console.log(gameOver);
+        labelList[i].addEventListener("click", function () {
+            labelList[i].classList.add("hidden");
+            console.log(colors[i][0]);
+            console.log(redValue.textContent);
+            var p = document.querySelector("#message");
+            if (colors[i][0] == redValue.textContent && colors[i][1] == greenValue.textContent && colors[i][2] == blueValue.textContent) {
+                p.textContent = "YOU WIN";
+                gameOver = true;
+            }
+            else {
+                p.textContent = "WRONG TRY AGAIN";
+            }
+        });
+    }
 }
 
 newGameButton.addEventListener("click", newGame);
 
 function newGame() {
+    gameOver = false;
+    var p = document.querySelector("#message");
+    p.textContent = "";
+    //unhide all of the elements   
+    for (let i = 0; i < 6; i++) {
+        var block = labelList[i];
+        block.classList.remove("hidden");
+    }
     colors = getRandomColors(totalColors);
-    console.log(totalColors);
     winningColor = colors[getWinningNumber(totalColors)];
     redValue.textContent = winningColor[0];
     greenValue.textContent = winningColor[1];
@@ -85,11 +104,11 @@ function setColors(rgbList, totalColors) {
     var color = "";
     for (let i = 0; i < totalColors; i++) {
         var curr = rgbList[i];
-        color = "rgb(" + curr.shift() + ", " + curr.shift() + ", " + curr.shift() +")";
+        color = "rgb(" + curr[0] + ", " + curr[1] + ", " + curr[2] + ")";
         labelList[i].style.background = color;
     }
-    if(totalColors == 3) {
-        for(let i = 3; i < 6; i++) {
+    if (totalColors == 3) {
+        for (let i = 3; i < 6; i++) {
             labelList[i].classList.add(".hidden");
         }
     }
