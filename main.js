@@ -30,6 +30,11 @@ easyModeButton.addEventListener("click", function () {
     }
     else {
         //start a new game
+        easyModeButton.classList.add("button-active");//TODO learn toggle
+        hardModeButton.classList.add("button-inactive");
+        easyModeButton.classList.remove("button-inactive");
+        hardModeButton.classList.remove("button-active");
+
         totalColors = 3;
         newGame();
     }
@@ -44,6 +49,10 @@ hardModeButton.addEventListener("click", function () {
         //start a new game
         totalColors = 6;
         newGame();
+        hardModeButton.classList.add("button-active");//TODO learn toggle
+        easyModeButton.classList.add("button-inactive");
+        hardModeButton.classList.remove("button-inactive");
+        easyModeButton.classList.remove("button-active");
     }
 });
 
